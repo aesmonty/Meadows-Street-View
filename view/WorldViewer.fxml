@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WorldController">
+   <children>
+      <ImageView id="background" fx:id="currentView" fitHeight="479.0" fitWidth="680.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="rightView" fitHeight="150.0" fitWidth="120.0" layoutX="455.0" layoutY="90.0" onMouseClicked="#lookRight" opacity="0.7" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" />
+      <ImageView fx:id="leftView" fitHeight="150.0" fitWidth="120.0" layoutY="90.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" />
+      <ImageView fx:id="forwardView" fitHeight="128.0" fitWidth="159.0" layoutX="222.0" layoutY="230.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="forward" layoutX="229.0" layoutY="170.0" mnemonicParsing="false" onAction="#goForward" opacity="0.66" prefHeight="179.0" prefWidth="147.0" style="-fx-background-color: transparent;" textFill="#000000a9" />
+      <Button fx:id="buttonR" layoutX="455.0" layoutY="100.0" mnemonicParsing="false" onAction="#lookRight" prefHeight="150.0" prefWidth="125.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="buttonL" layoutY="100.0" mnemonicParsing="false" onAction="#lookLeft" prefHeight="150.0" prefWidth="125.0" style="-fx-background-color: transparent;" textFill="TRANSPARENT" AnchorPane.leftAnchor="0.0" />
+      <Pane layoutY="256.0" prefHeight="128.0" prefWidth="252.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <ImageView fx:id="itemsLeft" fitHeight="156.0" fitWidth="32.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="itemsRight" fitHeight="156.0" fitWidth="32.0" layoutX="210.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="item0" fitHeight="164.0" fitWidth="106.0" layoutX="23.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="item1" fitHeight="114.0" fitWidth="49.0" layoutX="115.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="item2" fitHeight="107.0" fitWidth="49.0" layoutX="165.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="hand" fitHeight="107.0" fitWidth="112.0" layoutX="25.0" layoutY="25.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+            <Button fx:id="itemsL" layoutX="-7.0" layoutY="2.0" mnemonicParsing="false" onAction="#lookItemsLeft" prefHeight="156.0" prefWidth="40.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="itemsR" layoutX="210.0" layoutY="2.0" mnemonicParsing="false" onAction="#lookItemsRight" prefHeight="156.0" prefWidth="40.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="pick" layoutX="34.0" layoutY="2.0" mnemonicParsing="false" onAction="#pickItem" prefHeight="128.0" prefWidth="76.0" style="-fx-background-color: transparent;" />
+         </children>
+      </Pane>
+      <Pane layoutX="411.0" layoutY="284.0" prefHeight="114.0" prefWidth="187.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fx:id="leftCase" fitHeight="107.0" fitWidth="32.0" layoutX="10.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" y="10.0" />
+            <ImageView fx:id="rightCase" fitHeight="107.0" fitWidth="32.0" layoutX="145.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="itemCase" fitHeight="107.0" fitWidth="112.0" layoutX="45.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="caseL" layoutX="1.0" layoutY="10.0" mnemonicParsing="false" onAction="#lookCaseLeft" prefHeight="107.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="caseR" layoutX="152.0" layoutY="5.0" mnemonicParsing="false" onAction="#lookCaseRight" prefHeight="107.0" prefWidth="32.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="drop" layoutX="38.0" layoutY="4.0" mnemonicParsing="false" onAction="#dropItem" prefHeight="107.0" prefWidth="112.0" style="-fx-background-color: transparent;" />
+         </children>
+      </Pane>
+      <MenuBar fx:id="myMenu" prefHeight="29.0" prefWidth="246.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menuItems" mnemonicParsing="false" text="Spot Items" />
+          <Menu fx:id="menuSuitcase" mnemonicParsing="false" text="Suitcase" />
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#exitWorld" text="Exit" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="spotMessage" alignment="CENTER" disable="true" layoutX="352.0" layoutY="20.0" prefHeight="63.0" prefWidth="215.0">
+         <font>
+            <Font name="TeXGyreBonumMath-Regular" size="25.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
